@@ -1,0 +1,40 @@
+{% extends 'enroll/base.html' %}   
+
+
+
+{% block content %}
+
+<table class="table table-borderless">
+    <thead class="border-bottom font-weight-bold">
+        <tr style="font-style: italic;font-weight: bold;">
+            <td>First Name</td>
+            <td>Last Name</td>
+            <td>Roll No.</td>
+            <td>Mobile No.</td>
+            <td>Actions</td>
+        </tr>
+    </thead>
+    <tbody>
+        {% for student in student_list %}
+        <tr>
+            <td>{{student.fname}}</td>
+            <td>{{student.lname}}</td>
+            <td>{{student.roll_no}}</td>
+            <td>{{student.mobile}}</td>
+            <td>
+                <a href="{% url 'student_update' student.id %}" class="btn text-secondary-px-0">
+                    <i class="far fa-edit fa-lg"></i>
+                </a>
+                <form action="{% url 'student_delete' student.id %}" method="post" class="d-inline"> 
+                    {% csrf_token %}
+                    <button type="submit" class="btn">
+                    <i class="far fa-trash-alt fa-lg text-danger float-right"></i>
+                    </button>
+                </form>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+{% endblock content %}

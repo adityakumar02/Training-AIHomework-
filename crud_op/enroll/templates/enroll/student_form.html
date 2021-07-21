@@ -1,0 +1,30 @@
+{% extends 'enroll/base.html' %}   
+{% load crispy_forms_tags %}
+
+
+
+{% block content %}
+<form action="" method="post" autocomplete="off">
+    {% csrf_token %}
+   
+    
+    <div class="row">
+        <div class="col-md-6">
+            {{form.fname|as_crispy_field}}
+        </div>
+        <div class="col-md-6">
+            {{form.lname|as_crispy_field}}
+        </div>
+        <div class="col-md-6">
+            {{form.roll_no|as_crispy_field}}
+        </div>
+        <div class="col-md-6">
+            {{form.mobile|as_crispy_field}}
+        </div>
+    </div>
+    <div style="margin-top: 20px; text-align: center;">
+    <button type="submit" class="btn btn-warning"><i class="fas fa-file-download"></i>Submit</button>
+    </div>
+</form>
+
+{% endblock content %}
